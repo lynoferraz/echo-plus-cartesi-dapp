@@ -11,7 +11,7 @@ WORKDIR /opt/cartesi/share
 
 COPY dependencies .
 COPY shasumfile .
-RUN while read DEP; do wget -O $DEP; done < dependencies
+RUN while read -r NAME URL; do wget -O "$NAME" "$URL"; done < dependencies
 RUN sha1sum -c shasumfile
 
 
